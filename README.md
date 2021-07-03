@@ -48,3 +48,16 @@ export default {
   }
 }
 ```
+### 반복문
+```v-for="변수 in 범위" :key = "계속 변하는 숫자 또는 문자"```   
+* 예시
+```
+<div class="menu">
+    <a v-for="headerMenu in headerMenus" :key = "headerMenu">{{headerMenu}}</a> 
+  </div>
+```
+```
+headerMenus : ['Home', 'Shop', 'About']
+```
+위 예시에서 headerMenu 변수에는 headerMenus의 원소들이 차례대로 대입된다.       
+따라서 Home, Shop, About 3개의 a태그가 만들어진다.

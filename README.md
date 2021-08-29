@@ -61,3 +61,19 @@ headerMenus : ['Home', 'Shop', 'About']
 ```
 위 예시에서 headerMenu 변수에는 headerMenus의 원소들이 차례대로 대입된다.       
 따라서 Home, Shop, About 3개의 a태그가 만들어진다.
+### 조건문
+`v-if="조건"` : 조건이 true일 때만 해당 컴포넌트가 화면에 보인다.
+* 예 : `v-if="_loginState == 0"`
+* 예시 코드 (로그인 상태에 따라 헤더에 보여지는 메뉴가 달라지도록 설정)
+```
+<div class="nav-menu">
+    <router-link class="menu" v-if="_loginState == 0" :to="{name : 'Signup'}">Sign up</router-link>
+    <img class="nav-menu-division" v-if="_loginState == 0" src="../../assets/nav-menu-division.svg" alt="">
+    <button class="menu" @click="openLoginPopup" v-if="_loginState == 0">Login</button>
+    <button class="menu" @click="openLoginPopup" v-if="_loginState == undefined">Login</button>
+    <button class="menu" @click="logout" v-if="_loginState == 1">Logout</button>
+    <img class="nav-menu-division" v-if="_loginState == 1" src="../../assets/nav-menu-division.svg" alt="">
+    <!-- 로그인이 된 경우 마이페이지로 이동 -->
+    <router-link class="menu" :to="{name : 'Mypage'}" v-if="_loginState == 1">My page</router-link>
+</div>
+```
